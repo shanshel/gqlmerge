@@ -14,8 +14,7 @@ should be easily integrated with ".Makefile" or used as step in your automation
 go install github.com/shanshel/gqlmerge
 ```
 ## Usage
-
-you 
+ 
 
 ```bash
 gqlmerge $srcFolder $destPath
