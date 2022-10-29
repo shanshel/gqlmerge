@@ -15,13 +15,13 @@ import (
 
 type input struct {
 	src  string
-	dist string
+	dest string
 }
 
 func main() {
 
 	flag.Usage = func() {
-		fmt.Println("Usage: gqlmerge $srcFolder $distFile")
+		fmt.Println("Usage: gqlmerge $srcFolder $destFile")
 		flag.PrintDefaults()
 	}
 
@@ -112,16 +112,16 @@ func main() {
 
 	container += queryContainer + mutationContainer + subscriptionContainer
 
-	os.WriteFile(inputData.dist, []byte(strings.TrimSpace(container)), 0644)
+	os.WriteFile(inputData.dest, []byte(strings.TrimSpace(container)), 0644)
 }
 
 func getCliInput() (*input, error) {
 	if len(os.Args) < 2 {
-		return nil, errors.New("src & dist argument are required, example: gogracom $src $dist")
+		return nil, errors.New("src & dist argument are required, example: gogracom $src $dest")
 	}
 	flag.Parse()
 	return &input{
 		src:  flag.Arg(0),
-		dist: flag.Arg(1),
+		dest: flag.Arg(1),
 	}, nil
 }
